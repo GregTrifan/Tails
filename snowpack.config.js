@@ -10,6 +10,11 @@ module.exports = {
       '@prefresh/snowpack',
       "@snowpack/plugin-postcss",
     ],
+    alias: {
+      // Enable Compatibility to React libs, like react-redux
+      "react": "preact/compat",
+      "react-dom": "preact/compat"
+    },
     routes: [
       /* Enable an SPA Fallback in development: */
       // {"match": "routes", "src": ".*", "dest": "/index.html"},
