@@ -5,7 +5,7 @@ import {
     decrement,
     increment,
     selectCount
-} from "../storage/counter";
+} from "../storage/counterSlice";
 
 const Main = () => {
     const dispatch = useDispatch();
