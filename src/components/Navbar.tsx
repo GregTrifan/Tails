@@ -3,7 +3,7 @@ import { Link } from "preact-router/match";
 import { useState } from "preact/hooks";
 import logo from "../img/logo.png";
 const Navbar = () => {
-  const [menu, toggleMenu] = useState();
+  const [menu, toggleMenu] = useState(false);
   return (
     <div>
       <nav className="bg-gray-800">
