@@ -2,18 +2,24 @@ import { h } from "preact";
 import { Link } from "preact-router/match";
 import { useState } from "preact/hooks";
 import logo from "../img/logo.png";
+import {BiMoon,BiSun} from "react-icons/bi";
+import { selectTheme,toggle } from "../storage/themeSlice";
+import {useSelector,useDispatch} from "react-redux";
+
 const Navbar = () => {
+  const dark = useSelector(selectTheme);
+  const dispatch=useDispatch();
   const [menu, toggleMenu] = useState(false);
-  
+
   const Routes = [
     {
-      link:"",
-      title:"Home"
+      link: "",
+      title: "Home",
     },
     {
-      link:"todos",
-      title:"Todos"
-    }
+      link: "todos",
+      title: "Todos",
+    },
   ];
 
   return (
@@ -27,16 +33,24 @@ const Navbar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  {Routes.map((page)=> {
-                    return <Link
-                    href={`/${page.link}`}
-                    className="hover:bg-gray-700 text-gray-50 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {page.title}
-                  </Link>
+                  {Routes.map((page) => {
+                    return (
+                      <Link
+                        href={`/${page.link}`}
+                        className="hover:bg-gray-700 text-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        {page.title}
+                      </Link>
+                    );
                   })}
                 </div>
               </div>
+              <span
+                    className="hover:bg-gray-700 text-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                    onClick={()=>dispatch(toggle())}
+                    >
+                      {dark?<BiSun className="h-6 w-5"/>:<BiMoon className="h-6 w-5"/>} 
+            </span>
             </div>
             <div class="-mr-2 flex md:hidden">
               <button
@@ -86,10 +100,10 @@ const Navbar = () => {
           id="mobile-menu"
         >
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {Routes.map(page => (
+            {Routes.map((page) => (
               <Link
-              href={`/${page.link}`}
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                href={`/${page.link}`}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 {page.title}
               </Link>
