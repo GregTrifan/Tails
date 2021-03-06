@@ -11,12 +11,12 @@ const Main = () => {
 
   return (
     <div className={`${theme ? "dark" : ""}`}>
-      <div className="dark:bg-black bg-gray-50" style={{height:"100vh"}} >
-      <Navbar />
-      <Router>
-        <Route path="/" component={Home} />
-        <Route path="/todos" component={Todos} />
-      </Router>
+      <div className="dark:bg-black bg-gray-50" style={{ height: "100vh" }}>
+        <Navbar />
+        <Router>
+          <Route path="/" component={Home} />
+          <Route path="/todos" component={Todos} />
+        </Router>
       </div>
     </div>
   );

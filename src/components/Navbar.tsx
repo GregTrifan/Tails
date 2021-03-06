@@ -2,13 +2,14 @@ import { h } from "preact";
 import { Link } from "preact-router/match";
 import { useState } from "preact/hooks";
 import logo from "../img/logo.png";
-import {BiMoon,BiSun} from "react-icons/bi";
-import { selectTheme,toggle } from "../storage/themeSlice";
-import {useSelector,useDispatch} from "react-redux";
+import { BiMoon, BiSun } from "react-icons/bi";
+import { selectTheme, toggle } from "../storage/themeSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { HiMenu, HiOutlineX } from "react-icons/hi";
 
 const Navbar = () => {
   const dark = useSelector(selectTheme);
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [menu, toggleMenu] = useState(false);
 
   const Routes = [
@@ -46,14 +47,19 @@ const Navbar = () => {
                 </div>
               </div>
               <span
-                    className="hover:bg-gray-700 text-gray-50 px-3 py-2 rounded-md text-sm font-medium"
-                    onClick={()=>dispatch(toggle())}
-                    >
-                      {dark?<BiSun className="h-6 w-5"/>:<BiMoon className="h-6 w-5"/>} 
-            </span>
+                className="hover:bg-gray-700 text-gray-50 px-3 py-2 rounded-md text-sm font-medium"
+                onClick={() => dispatch(toggle())}
+              >
+                {dark ? (
+                  <BiSun className="h-6 w-5" />
+                ) : (
+                  <BiMoon className="h-6 w-5" />
+                )}
+              </span>
             </div>
             <div class="-mr-2 flex md:hidden">
               <button
+                style={{ border: "20px" }}
                 onClick={() => toggleMenu(!menu)}
                 type="button"
                 class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -61,36 +67,8 @@ const Navbar = () => {
                 aria-expanded="false"
               >
                 <span class="sr-only">Open main menu</span>
-                <svg
-                  className={`${menu ? "hidden" : ""} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-                <svg
-                  className={`${menu ? "" : "hidden"} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <HiMenu className={`${menu ? "hidden" : ""} h-6 w-6`} />
+                <HiOutlineX className={`${menu ? "" : "hidden"} h-6 w-6`} />
               </button>
             </div>
           </div>
