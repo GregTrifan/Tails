@@ -11,6 +11,9 @@ const Home = () => {
   const changeVal = (e: object) => {
     setAmount(e.target.value);
   };
+
+
+  
   return (
     <div>
       <div className="bg-gray-50 dark:bg-black">
