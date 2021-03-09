@@ -7,8 +7,12 @@ const Home = () => {
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
   const count = useSelector(selectCount);
-
-  const changeVal = (e: object) => {
+  interface Input {
+    target: {
+      value:number
+    }
+  }
+  const changeVal = (e: Input) => {
     setAmount(e.target.value);
   };
 
